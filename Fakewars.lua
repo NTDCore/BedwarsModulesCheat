@@ -97,13 +97,14 @@ local buttonapi = {}
 local player = game.Players.LocalPlayer
 local mouse = player:GetMouse()
 
-local bind = "nil"
-
+local bind = nil
 
 buttonapi["Name"] = argstablemain["Name"]
 buttonapi["Tab"] = argstablemain["Tab"]
-buttonapi["Bind"] = argstablemain["Bind"]
+buttonapi["bind"] = argstablemain["bind"]
 buttonapi["Function"] = argstablemain["Function"]
+
+--argstablemain["bind"] = bind
 --local enabled = isfile(buttonapi["Name"]..".txt")
 
 --if enabled then
@@ -126,7 +127,7 @@ TextButton.Text = buttonapi["Name"]
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 14.000
 mouse.KeyDown:connect(function(key)
-	if key == bind then
+	if key == buttonapi["bind"] then
 	if buttonapi["Function"] ~= true then
 	buttonapi["Function"] = true
 	table.insert(states,argstablemain["Function"])
@@ -150,14 +151,14 @@ TextButton.MouseButton1Down:Connect(function()
 --end
 	table.insert(states,argstablemain["Function"])
 	states[buttonapi["Name"]] = true
-	buttonapi["Bind"] = true
+--[[  buttonapi["Bind"] = true  --]]
 	buttonapi["Function"] = true
 	TextButton.BackgroundColor3 = Color3.fromRGB(150, 24, 222)
 	else
 		table.insert(states,argstablemain["Function"])
 	states[buttonapi["Name"]] = false
 	TextButton.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
-	buttonapi["Bind"] = false
+--[[	buttonapi["Bind"] = false --]]
 	buttonapi["Function"] = false
 	end
 	if buttonapi["Function"] ~= true then
@@ -191,7 +192,7 @@ TextButton.MouseButton2Down:Connect(function()
 
 	UICorner.Parent = TextBox
 	TextBox.FocusLost:Connect(function()
-		bind = TextBox.Text
+		buttonapi["bind"] = TextBox.Text
 		TextBox:Destroy()
 --if enabled then
 --delfile(buttonapi["Name"],scriptName)
@@ -212,6 +213,7 @@ newTab("Utility")
 local InstaKillExploit = windowapi.CreateButton({
 	["Name"] = "InstaKillExploit",
 	["Tab"] = "Combat",
+	["bind"] = nil,
 	["Function"] = function(callback)
 	if callback then
 	_G.InstaKillExploit = true
@@ -332,7 +334,7 @@ local InstaKillExploit = windowapi.CreateButton({
 local Speed = windowapi.CreateButton({
 	["Name"] = "Speed",
 	["Tab"] = "Movement",
-	["Bind"] = Z,
+	["bind"] = Z, --]]
 	["Function"] = function(callback)
 	if callback then
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
@@ -345,7 +347,7 @@ local Speed = windowapi.CreateButton({
 local Flight = windowapi.CreateButton({
 	["Name"] = "Flight",
 	["Tab"] = "Movement",
-	["Bind"] = X,
+	["bind"] = X,    --]]
 	["Function"] = function(callback)
 	if callback then
 	workspace.Gravity = 0
@@ -358,7 +360,7 @@ local Flight = windowapi.CreateButton({
 local FunnyFly = windowapi.CreateButton({
 	["Name"] = "FunnyFly",
 	["Tab"] = "Movement",
-	["Bind"] = V,
+	["bind"] = V,     --]]
 	["Function"] = function(callback)
 	if callback then
 	_G.Velo = true
@@ -382,6 +384,7 @@ local AntivoidEnabled = nil
 local AntiVoid = windowapi.CreateButton({
 	["Name"] = "AntiVoid",
 	["Tab"] = "Utility",
+	["bind"] = nil,
 	["Function"] = function(callback)
 	if callback then
 	AntivoidEnabled = true
@@ -405,6 +408,7 @@ AutoToxicEnabled = nil
 local AutoToxic = windowapi.CreateButton({
 	["Name"] = "AutoToxic",
 	["Tab"] = "Utility",
+	["bind"] = nil,
 	["Function"] = function(callback)
 	if callback then
 	AutoToxicEnabled = true
@@ -431,6 +435,7 @@ local AutoToxic = windowapi.CreateButton({
 local Nuker = windowapi.CreateButton({
 	["Name"] = "Nuker",
 	["Tab"] = "Utility",
+	["bind"] = nil,
 	["Function"] = function(callback)
 	if callback then
 	AutoToxicEnabled = true
@@ -461,6 +466,7 @@ local Nuker = windowapi.CreateButton({
 local betterNuker = windowapi.CreateButton({
 	["Name"] = "MegaNuker",
 	["Tab"] = "Utility",
+	["bind"] = nil
 	["Function"] = function(callback)
 	if callback then
 	AutoToxicEnabled = true
@@ -477,6 +483,11 @@ local betterNuker = windowapi.CreateButton({
 		}
 	}
 
+	game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+	game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+	game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+	game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+	game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
 	game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
 	end
 	until not AutoToxicEnabled
