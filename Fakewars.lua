@@ -45,9 +45,10 @@ Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 Frame.Position = UDim2.new(0.439486176*uiCount/2.7, 0, 0.301745594, 0)
 Frame.Size = UDim2.new(0, 157, 0, 400)
+--
+Frame.Active = true
 Frame.Draggable = true
-
-
+--]]
 UICorner.Parent = Frame
 
 Frame_2.Parent = Frame
@@ -101,7 +102,7 @@ local bind = nil
 
 buttonapi["Name"] = argstablemain["Name"]
 buttonapi["Tab"] = argstablemain["Tab"]
---buttonapi["bind"] = argstablemain["bind"]
+-- = argstablemain["bind"]
 buttonapi["Function"] = argstablemain["Function"]
 
 --argstablemain["bind"] = bind
@@ -127,7 +128,7 @@ TextButton.Text = buttonapi["Name"]
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 14.000
 mouse.KeyDown:connect(function(key)
-	if key == --[[buttonapi["bind"]--]] bind then
+	if key == --[[--]] bind then
 	if buttonapi["Function"] ~= true then
 	buttonapi["Function"] = true
 	table.insert(states,argstablemain["Function"])
@@ -151,14 +152,14 @@ TextButton.MouseButton1Down:Connect(function()
 --end
 	table.insert(states,argstablemain["Function"])
 	states[buttonapi["Name"]] = true
---[[  buttonapi["Bind"] = true  --]]
+--[[   = true  --]]
 	buttonapi["Function"] = true
 	TextButton.BackgroundColor3 = Color3.fromRGB(150, 24, 222)
 	else
 		table.insert(states,argstablemain["Function"])
 	states[buttonapi["Name"]] = false
 	TextButton.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
---[[	buttonapi["Bind"] = false --]]
+--[[	 = false --]]
 	buttonapi["Function"] = false
 	end
 	if buttonapi["Function"] ~= true then
@@ -213,7 +214,7 @@ newTab("Utility")
 local InstaKillExploit = windowapi.CreateButton({
 	["Name"] = "InstaKillExploit",
 	["Tab"] = "Combat",
-	
+
 	["Function"] = function(callback)
 	if callback then
 	_G.InstaKillExploit = true
@@ -334,7 +335,7 @@ local InstaKillExploit = windowapi.CreateButton({
 local Speed = windowapi.CreateButton({
 	["Name"] = "Speed",
 	["Tab"] = "Movement",
-	 --]]
+--]]
 	["Function"] = function(callback)
 	if callback then
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
@@ -347,7 +348,7 @@ local Speed = windowapi.CreateButton({
 local Flight = windowapi.CreateButton({
 	["Name"] = "Flight",
 	["Tab"] = "Movement",
-	 --]]
+--]]
 	["Function"] = function(callback)
 	if callback then
 	workspace.Gravity = 0
@@ -360,7 +361,6 @@ local Flight = windowapi.CreateButton({
 local FunnyFly = windowapi.CreateButton({
 	["Name"] = "FunnyFly",
 	["Tab"] = "Movement",
-	 --]]
 	["Function"] = function(callback)
 	if callback then
 	_G.Velo = true
@@ -384,7 +384,7 @@ local AntivoidEnabled = nil
 local AntiVoid = windowapi.CreateButton({
 	["Name"] = "AntiVoid",
 	["Tab"] = "Utility",
-	
+
 	["Function"] = function(callback)
 	if callback then
 	AntivoidEnabled = true
@@ -408,7 +408,7 @@ AutoToxicEnabled = nil
 local AutoToxic = windowapi.CreateButton({
 	["Name"] = "AutoToxic",
 	["Tab"] = "Utility",
-	
+
 	["Function"] = function(callback)
 	if callback then
 	AutoToxicEnabled = true
@@ -435,7 +435,7 @@ local AutoToxic = windowapi.CreateButton({
 local Nuker = windowapi.CreateButton({
 	["Name"] = "Nuker",
 	["Tab"] = "Utility",
-	
+
 	["Function"] = function(callback)
 	if callback then
 	AutoToxicEnabled = true
